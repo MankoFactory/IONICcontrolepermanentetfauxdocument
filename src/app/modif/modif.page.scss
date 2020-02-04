@@ -1,0 +1,19 @@
+ion-item{
+    margin-left: auto;
+    margin-right: auto;  
+    width: 400px;
+}
+ion-toolbar{
+    background-color: green($color: #000000);
+  }
+  ion-title{
+    color:  white;
+}
+.form-group .btn{
+	color: #fff;
+	border-radius: 30px;
+	background: #04B404;
+	line-height: normal;
+	display: inline-block;
+	
+}

@@ -1,0 +1,104 @@
+
+  <ion-header style="background-color: #4dac27;"> 
+    <ion-toolbar color="green">
+      <ion-buttons slot="start">
+     
+        <ion-menu-button ></ion-menu-button>
+       </ion-buttons>
+      <ion-title style="text-align: center;">Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content padding>
+    <div *ngIf="client">
+    <ion-row>
+      <ion-col>
+      <ion-item>
+      <ion-label>telephone 1:</ion-label>
+      {{client.telephone}}
+      </ion-item>
+      </ion-col>
+      <ion-col>
+      <ion-item>  
+      <ion-label>Telephone 2:</ion-label>  
+      {{client.telephone1}}
+      </ion-item>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+      <ion-item>
+        <ion-label>Nom</ion-label>
+        {{client.nom}}
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label>Prénom:</ion-label>
+        {{client.prenom}}
+      </ion-item>
+    </ion-col>
+    </ion-row> 
+    <ion-row>
+      <ion-col>
+    <ion-item>
+      <ion-label>Date naissance:</ion-label>
+      {{client.date_naissance}}
+    </ion-item>
+  </ion-col>
+  <ion-col>
+    <ion-item>
+      <ion-label>Lieu de naissance:</ion-label>
+      {{client.lieu_naissance}}
+    </ion-item>
+  </ion-col>
+  </ion-row> 
+  <ion-row>
+    <ion-col>
+  <ion-item>
+    <ion-label>Adresse client:</ion-label>
+    {{client.adresse_client}}
+  </ion-item>
+  </ion-col>
+  <ion-col>
+  <ion-item>
+    <ion-label>Activite:</ion-label>
+    {{client.activite}}
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+  <ion-col>
+  <ion-item>
+  <ion-label>CNI:</ion-label>
+ {{client.num_cni}}
+  </ion-item>
+  </ion-col>
+  <ion-col>
+  <ion-item>
+  <ion-label>Agence:</ion-label>
+  {{client.agence}}
+  </ion-item>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>  
+      <ion-label>Genre:</ion-label>  
+      {{client.sexe}}
+      </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label>Statut:</ion-label>
+        {{client.statut}}
+        </ion-item>
+        </ion-col>
+        
+  </ion-row>
+
+</div>
+   </ion-content>
+
+

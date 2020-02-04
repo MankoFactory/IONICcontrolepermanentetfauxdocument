@@ -1,0 +1,158 @@
+	
+// }
+// #container p {
+// 	font-family: 'Farsan', cursive;
+// 	margin: 3px 0 1.5em 0;
+// 	font-size: 1.3em;
+// 	color: #7d7d7d;
+// }
+
+// #container input {
+// /* 	background: rgba(255, 13, 254, 0.90); */
+// 	width: 210px;
+// 	display: inline-block;
+// 	text-align: center;
+// 	border-radius: 7px;
+// 	background: #eee;
+// 	padding: 1em 2em;
+// 	outline: none;
+// 	border: none;
+// 	color: #222;
+// 	transition: 0.3s linear;
+// }
+// ::placeholder{color: #999;}
+// #container input:focus {background: rgba(0, 0, 333, 0.10);}
+
+// #container button {
+// 	background-image: linear-gradient(to left, rgba(146, 255, 173, 0.75) 0%, rgba(8, 71, 19, 0.86) 100%);
+// 	box-shadow: 0 9px 25px -5px #0ab16b;
+// 	font-family: 'Abel', sans-serif;
+// 	padding: 0.5em 1.9em;
+// 	margin: 2.3em 0 0 0;
+// 	border-radius: 7px;
+// 	font-size: 1.4em;
+// 	cursor: pointer;
+// 	color: #FFFFFF;
+// 	font-size: 1em;
+// 	outline: none;
+// 	border: none;
+// 	transition: 0.3s linear;
+
+// }
+// #container button:hover{transform: translatey(2px);}
+// #container button:active{transform: translatey(5px);}
+// .lena {
+// 	margin-top: -30%;
+// }
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900&display=swap');
+
+.login-header{
+
+    background: var(--theme-color);
+
+}
+.login-header{
+	position: relative;
+	background: var(--theme-color);
+	border-radius: 0em;
+
+}
+.login-header:after{
+	content: "" ;
+	position: absolute;
+	bottom: 0;
+	left: 15%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top-color: var(--theme-color);
+	border-bottom: 0;
+	margin-left: -15px;
+	margin-bottom: -15px;
+
+}
+.logo-img{
+    display: block;
+    width: 120px;
+    margin: 0 auto;
+    text-align: center;
+}
+[heading-column-lr]{
+	display: flex;
+	.m1-flex-align: center;
+	align-items: center;
+}
+[big-heading]{
+	font-family: "Heebo-Bold" !important;
+	font-size: 30px !important;
+	color: var(--color-black);
+}
+[small-heading]{
+	font-family: "Heebo-Regular" limportant;
+	margin-left: auto;padding-right: 70px;font-size: 15px
+}
+ion-label{
+	color: #000;
+	opacity: 8;
+	font-size: 13px;
+	display: block;
+}
+ion-content{
+	--background: #fafafa; 
+}
+[transparent]{
+	--background: transparent;
+}
+ ion-input{
+	 --color: #000;
+	 --padding-bottom: 15px;
+	 --padding-top: 15px;
+	 --padding-start: 15px;
+	 font-size: 15px;
+	 text-indent: 1px;
+	 padding-left: 10px !important;
+ }
+ [icon-small]{
+	 width: 30px;
+
+ }
+ ion-item{
+	 --highlight-color-focused: transparent;
+	 --highlight-height: 0;
+	 --highlight-color-invalid:#000;
+	 --highlight-color-valid:#ddd;
+	 --min-height: 65px;
+	 --padding-start: 0;
+
+ }
+ [linespace]{
+	 height: 30px;
+ }
+ [ion-label]{
+	 color: #000;
+	 opacity: .8;
+	 font-size: 13px;
+	 display: block;
+ }
+ .forget-password{
+	color: #000;
+	text-align: right;
+	font-size: 13px;
+	display: block;
+	padding: 10px;
+}
+.form-group .form-control{
+	border-radius: 30px;
+}
+.modal-title{
+	font-family: 'Varela Round', sans-serif;
+}
+.form-group .btn{
+	color: #fff;
+	border-radius: 30px;
+	background: #04B404;
+	line-height: normal;
+	display: inline-block;
+		
+	
+}

@@ -1,0 +1,25 @@
+
+  ion-item{
+    margin-left: auto;
+    margin-right: auto;  
+    width: 350px;
+}
+ion-toolbar{
+    background-color: green($color: #000000);
+  }
+  ion-title{
+      color:  white;
+  }
+  ion-button{
+      color:rgb(34, 173, 34);
+      background: rgb(69, 196, 69);
+  }
+  ion-icon{
+      color:white;
+  }
+  h2{
+    color:#50A125; 
+  }
+  .iconSize {
+    font-size: 50px;
+  }

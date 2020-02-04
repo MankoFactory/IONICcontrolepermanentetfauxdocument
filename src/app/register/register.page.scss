@@ -1,0 +1,34 @@
+ion-toolbar{
+  background-color: green($color: #000000);
+}
+ion-title{
+    color:  white;
+}
+ion-button{
+  color:rgb(34, 173, 34);
+  background: rgb(69, 196, 69);
+}
+ion-icon{
+    color:white;
+}
+h2{
+  color:#50A125; 
+}
+#carte{
+  position: sticky;
+//   right: 0;
+  position:-webkit-sticky;
+ 
+}
+#register{
+  margin-top: 500px;
+}
+.form-group .btn{
+	color: #fff;
+	border-radius: 30px;
+	background: #04B404;
+	line-height: normal;
+	display: inline-block;
+	
+}
+

@@ -1,0 +1,27 @@
+<ion-app>
+  <!-- <ion-router-outlet></ion-router-outlet> -->
+  
+    <ion-menu side="end" type="overlay" >
+      <ion-header >
+        <ion-toolbar >
+          <ion-title style="background-color:white ;">SUNU MANKO</ion-title> 
+          <!-- <img src="../../assets/img/logo_Manko.png"> -->
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+         <ion-item routerLink="/login">Déconnexion
+           <ion-icon name="log-out" ></ion-icon>
+         </ion-item>
+         <ion-item routerLink="/todo">à faire
+          <ion-icon name="create" ></ion-icon>
+        </ion-item>
+        <ion-item routerLink="/home">consultation
+          <ion-icon name="paper" ></ion-icon>
+        </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  
+</ion-app>

@@ -1,0 +1,10 @@
+{
+  "name": "manko-app-ionic",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular",
+  "pro_id": "7055b763",
+  "id": "7055b763"
+}

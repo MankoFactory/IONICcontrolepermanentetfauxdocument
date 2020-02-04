@@ -1,0 +1,201 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start"><ion-back-button></ion-back-button></ion-buttons>
+    <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>Control permanent</ion-title>
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content>
+  <ion-card id="carte">
+    <img src="/assets/img/LOGO-VERT.png" alt="" />
+   <!-- <ion-card-header>
+      <ion-card-subtitle>Bienvenue à l'apllication controle permanent.</ion-card-subtitle>
+     <ion-card-title>  Et détection de faux documents
+       
+       </ion-card-title> 
+   </ion-card-header> -->
+   <ion-card-content style="text-align: center;">
+    <p style="font-size: 20px;">
+     Enregistrement d'un client         
+    </p>
+  </ion-card-content>
+</ion-card>
+    <ion-card>
+  <div class="ion-padding" >
+    <ion-segment  [(ngModel)]="relationship" color="primary" >
+      <ion-segment-button id="choix1"  value="client">
+        Client
+    
+      </ion-segment-button>
+      <ion-segment-button id="choix2"  value="garant">
+        Garant
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+    <div [(ngSwitch)]="relationship"> 
+        <ion-list *ngSwitchCase="'client'"> 
+          <form [formGroup]="registerForm" (ngSubmit)="ajoutUser()">
+            <div class="form-group">
+              <label >Téléphone 1:</label>
+              <input type="tel" placeholder="Telephone 1" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
+              <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                  <div *ngIf="f.telephone.errors.required">Veuillez saisir le numéro de téléphone</div>
+                  <div *ngIf="f.telephone.errors.pattern">Entrez un numéro de téléphone valide</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label>Téléphone 2:</label>
+            <input type="tel" placeholder="Telephone 2" formControlName="telephone1" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone1.errors }" />
+            <div *ngIf="submitted && f.telephone1.errors" class="invalid-feedback">
+                <!-- <div *ngIf="f.telephone1.errors.required">Veuillez saisir le numéro de téléphone</div> -->
+                <div *ngIf="f.telephone1.errors.pattern">Entrez un numéro de téléphone valide</div> 
+            </div>
+          </div>
+        <div class="form-group">
+          <label>Prénom:</label>
+          <input type="text" placeholder="Prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+          <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+              <div *ngIf="f.prenom.errors.required">Veuillez saisir le prénom</div>
+              <div *ngIf="f.prenom.errors.pattern">Entrez un prénom valide</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label>Nom:</label>
+        <input type="text" placeholder="Nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+            <div *ngIf="f.nom.errors.required">Veuillez saisir le nom</div>
+            <div *ngIf="f.nom.errors.pattern">Entrez un nom valide</div>
+        </div>
+    </div>
+    <div class="form-group">
+      <label>Numéro CNI:</label>
+      <input type="number" placeholder="CNI" formControlName="num_cni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.num_cni.errors }" />
+      <div *ngIf="submitted && f.num_cni.errors" class="invalid-feedback">
+          <div *ngIf="f.num_cni.errors.required">Veuillez saisir le cni</div>
+          <div *ngIf="f.num_cni.errors.pattern">Entrez un cni valide</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <label>Date naissance:</label>
+    <input  type="date" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }" >
+    <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
+        <div *ngIf="f.date_naissance.errors.required">Veuillez saisir la date de naissance</div>
+        <!-- <div *ngIf="f.nom.errors.minlength">Password must be at least 6 characters</div> -->
+    </div>
+  
+</div>
+<div class="form-group">
+  <label >Lieu naissance:</label>
+  <input type="text" placeholder="Lieu de naissance" formControlName="lieu_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lieu_naissance.errors }" />
+  <div *ngIf="submitted && f.lieu_naissance.errors" class="invalid-feedback">
+      <div *ngIf="f.lieu_naissance.errors.required">Veuillez saisir le lieu de naissance</div>
+      <div *ngIf="f.lieu_naissance.errors.pattern">Entrez un lieu valide</div>
+  </div>
+</div>
+<div class="form-group">
+  <label>Activité:</label>
+  <input type="text" placeholder="Activite" formControlName="activite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.activite.errors }" />
+  <div *ngIf="submitted && f.activite.errors" class="invalid-feedback">
+      <div *ngIf="f.activite.errors.required">Veuillez saisir une activite</div>
+       <div *ngIf="f.activite.errors.pattern">Entrez une activité valide</div> 
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Adresse:</label>
+  <input type="text" placeholder="Adresse client" formControlName="adresse_client" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse_client.errors }" />
+  <div *ngIf="submitted && f.adresse_client.errors" class="invalid-feedback">
+      <div *ngIf="f.adresse_client.errors.required">Veuillez saisir une adresse</div>
+       <div *ngIf="f.adresse_activite.errors.pattern">Entrez une adresse valide</div>
+  </div>
+</div>
+<div class="form-group">
+  <label>Agence:</label>
+  <input type="text" placeholder="Agence" formControlName="agence" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.agence.errors }" />
+  <div *ngIf="submitted && f.agence.errors " class="invalid-feedback">
+      <div *ngIf="f.agence.errors.required">Veuillez saisir une agence</div>
+      <div *ngIf="f.agence.errors.pattern">Entrez une agence valide</div>  
+  </div>
+</div>
+<div class="form-group">
+  <label >Photo devanture:</label>
+  <input type="file" placeholder="image devanture" formControlName="photo_venture" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.photo_venture.errors }" />
+  <div *ngIf="submitted && f.photo_venture.errors " class="invalid-feedback">
+      <div *ngIf="f.photo_venture.errors.required">Veuillez entrer la photo de devanture</div>
+      <!-- <div *ngIf="f.photo_venture.errors.minlength">Password must be at least 6 characters</div>  -->
+  </div>
+</div>
+<div class="form-group">
+  <label >Photo activité:</label>
+  <input type="file" placeholder="photo activite" formControlName="photo_activite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.photo_activite.errors }" />
+  <div *ngIf="submitted && f.photo_activite.errors " class="invalid-feedback">
+      <div *ngIf="f.photo_activite.errors.required">Veuillez entrer la photo de l'activité</div>
+      <!-- <div *ngIf="f.image_activite.errors.minlength">Password must be at least 6 characters</div>  -->
+  </div>
+</div>
+<div class="form-group">
+  <label>Genre:</label>
+  <!-- <input type="text" placeholder="Agence" formControlName="agence" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /> -->
+  <select placeholder="Genre" class="form-control" formControlName="sexe" placeholder="Genre">genre
+    <option value="homme">homme</option>
+    <option value="femme">femme</option>
+  </select>
+ 
+</div>
+
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-block" >Ajouter</button>
+        </div>
+                
+           
+        </form>
+      </ion-list>
+ </div>
+
+ <div [(ngSwitch)]="relationship"> 
+  <ion-list *ngSwitchCase="'garant'">
+    <form [formGroup]="garantForm" (ngSubmit)="ajoutgarant()">
+  
+    <div class="form-group">
+      <input type="text" placeholder="Prenom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && g.prenom.errors }" />
+      <div *ngIf="submitted && g.prenom.errors" class="invalid-feedback">
+          <div *ngIf="g.prenom.errors.required">veuillez entrer le prénom du garant</div>
+          <div *ngIf="g.prenom.errors.minlength">entrez un prénom valide</div>
+      </div>
+  </div>
+  <div class="form-group">
+    <input type="text" placeholder="Nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && g.nom.errors }" />
+    <div *ngIf="submitted && g.nom.errors" class="invalid-feedback">
+        <div *ngIf="g.nom.errors.required">veuillez entrer le nom du garant</div>
+        <div *ngIf="g.nom.errors.minlength">entrez un nom valide</div>
+    </div>
+</div>
+<div class="form-group">
+              
+  <input type="number" placeholder="Telephone" formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && g.telephone.errors }" />
+  <div *ngIf="submitted && g.telephone.errors" class="invalid-feedback">
+      <div *ngIf="g.telephone.errors.required">veuillez entrer le numéro de téléphone du garant</div>
+      <div *ngIf="g.telephone.errors.minlength"> entrer un nom valide</div>
+  </div>
+</div>
+<div class="form-group">
+              
+  <input type="number" placeholder="Client" formControlName="client" class="form-control" [ngClass]="{ 'is-invalid': submitted && g.client.errors }" />
+  <div *ngIf="submitted && g.client.errors" class="invalid-feedback">
+      <div *ngIf="g.client.errors.required">veuillez saisir le téléphone du client</div>
+      <div *ngIf="g.client.errors.minlength">saisissez un numéro valide</div>
+  </div>
+</div>
+<div class="form-group">
+  <button [disabled]="loading" class="btn btn-block" >Ajouter</button>
+</div>
+    </form>
+  </ion-list>
+  </div>
+</ion-card>
+</ion-content> 
