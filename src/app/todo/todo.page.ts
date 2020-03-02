@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Renderer2} from '@angular/core';
 import { AuthentService } from '../services/authent.service';
 import { Router } from '@angular/router';
 import { listuser } from './todo';
+import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-todo',
@@ -13,8 +15,10 @@ export class TodoPage implements OnInit {
   
   private selectedItem: any;
   public listuser: Array<{  telephone: "77777777" }> = [];
-  constructor(private _aut:AuthentService,
-    private router:Router) { }
+  public PtagClicked: boolean = false;
+
+  constructor(private _aut:AuthentService,private router:Router
+    ,public navCtrl: NavController, private render: Renderer2) { }
 
   ngOnInit() {
     this._aut.todo()
@@ -26,6 +30,9 @@ export class TodoPage implements OnInit {
      
     )
     
+  }
+  public onHide(controlToHide) {
+    this.render.setStyle(controlToHide, 'visibility', 'hidden');
   }
 
 }

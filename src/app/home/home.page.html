@@ -2,7 +2,9 @@
 
 <ion-header>
   <ion-toolbar color="primary">
-      <ion-buttons slot="start">
+    <ion-buttons slot="start"><ion-back-button></ion-back-button></ion-buttons>
+
+      <ion-buttons slot="end">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
     <ion-title> Controle permanent</ion-title>
@@ -11,20 +13,11 @@
 
 <ion-content>
     <ion-card class="welcome-card">
-        <img src="/assets/img/LOGO-VERT.png" alt="" />
-        <ion-card-header>
-          <ion-card-subtitle>Bienvenue à l'apllication controle permanent</ion-card-subtitle>
-          <ion-card-title> Et détection de faux documents
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>
-            Naviguer facilement et rapidement.          
-          </p>
-        </ion-card-content>
+      <h3>liste des clients</h3>
+       
       </ion-card>
-      <ion-footer>
-        <ion-toolbar>
+      <ion-card>
+        
           <ion-list>
             <h2 *ngFor="let u of listuser">
               <ion-item>  
@@ -34,9 +27,8 @@
 
             </ion-item>
             </h2>
-          
-            </ion-list>
-        </ion-toolbar>
-      </ion-footer>
+          </ion-list>
+       
+      </ion-card>
 </ion-content>
 

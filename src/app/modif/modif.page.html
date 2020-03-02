@@ -4,19 +4,13 @@
     <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    <ion-title>Enregistrement d'un client</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="sticky">
     <ion-card >
-         <img src="/assets/img/LOGO-VERT.png" alt="" />
-        <!-- <ion-card-header>
-           <ion-card-subtitle>Bienvenue à l'apllication controle permanent.</ion-card-subtitle>
-          <ion-card-title>  Et détection de faux documents
-            
-            </ion-card-title> 
-        </ion-card-header> -->
         <ion-card-content style="text-align: center;">
           <p style="font-size: 20px;">
            Modification d'un client         
@@ -24,120 +18,71 @@
         </ion-card-content>
     </ion-card>
 
-
-    
-  <div class="ion-padding">
-    <ion-segment  [(ngModel)]="relationship" color="primary" >
-      <ion-segment-button id="choix1"  value="client">
-        Client
-    
-      </ion-segment-button>
-      <ion-segment-button id="choix2"  value="garant">
-        Garant
-      </ion-segment-button>
-    </ion-segment>
-  </div> 
  
-    <div [(ngSwitch)]="relationship"> 
-        <ion-list *ngSwitchCase="'client'">  
-          <div [hidden]="submitted" style="width: 400px;">
+          <div [hidden]="submitted" >
+            <div class="container">
             <form >
 
               <div class="form-group">
-                <label >Telephone 1</label>
-                <input type="tel" class="form-control" id="telephone"  [(ngModel)]="client.telephone" name="telephone">
+                <label for="tel">Telephone 1</label>
+                <input type="tel" id="tel"class="form-control" id="telephone"  [(ngModel)]="client.telephone" name="telephone">
               </div>
           
               <div class="form-group">
-                <label >Telephone 2</label>
-                <input type="tel" class="form-control" id="telephone1" [(ngModel)]="client.telephone1" name="telephone1">
+                <label for="tel1">Telephone 2</label>
+                <input type="tel" id="tel1" class="form-control" id="telephone1" [(ngModel)]="client.telephone1" name="telephone1">
               </div>
           
               <div class="form-group">
-                <label>Nom:</label>
-                <input type="text" class="form-control" id="nom"  [(ngModel)]="client.nom" name="nom">
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" class="form-control" id="nom"  [(ngModel)]="client.nom" name="nom">
               </div>
 
               <div class="form-group">
-                <label>Prénom:</label>
-                <input type="text" class="form-control" id="prenom"  [(ngModel)]="client.prenom" name="prenom">
+                <label for="pren">Prénom:</label>
+                <input type="text" id="pren" class="form-control" id="prenom"  [(ngModel)]="client.prenom" name="prenom">
               </div>
 
               <div class="form-group">
-                <label>Date de naissance:</label>
-                <input type="date" class="form-control" id="date_naissance"  [(ngModel)]="client.date_naissance" name="date_naissance">
+                <label for="date">Date de naissance:</label>
+                <input type="date" id="date" class="form-control" id="date_naissance"  [(ngModel)]="client.date_naissance" name="date_naissance">
               </div>
 
               <div class="form-group">
-                <label>Lieu naissance:</label>
-                <input type="text" class="form-control" id="lieu_naissance"  [(ngModel)]="client.lieu_naissance" name="lieu_naissance">
+                <label for="lieu">Lieu naissance:</label>
+                <input type="text" id="lieu" class="form-control" id="lieu_naissance"  [(ngModel)]="client.lieu_naissance" name="lieu_naissance">
               </div>
 
               <div class="form-group">
-                <label>CNI:</label>
-                <input type="number" class="form-control" id="num_cni"  [(ngModel)]="client.num_cni" name="num_cni">
+                <label for="cni">CNI:</label>
+                <input type="number" id="cni" class="form-control" id="num_cni"  [(ngModel)]="client.num_cni" name="num_cni">
               </div>
           
               <div class="form-group">
-                <label>Adresse:</label>
-                <input type="text" class="form-control" id="adresse_client"  [(ngModel)]="client.adresse_client" name="adresse_client">
+                <label for="ad">Adresse:</label>
+                <input type="text" id="ad" class="form-control" id="adresse_client"  [(ngModel)]="client.adresse_client" name="adresse_client">
               </div>
 
               <div class="form-group">
-                <label>Activité:</label>
-                <input type="text" class="form-control" id="activite"  [(ngModel)]="client.activite" name="activite">
+                <label for="act">Activité:</label>
+                <input type="text" id="act" class="form-control" id="activite"  [(ngModel)]="client.activite" name="activite">
               </div>
 
               <div class="form-group">
-                <label>Agence:</label>
-                <input type="text" class="form-control" id="agence"  [(ngModel)]="client.agence" name="agence">
+                <label for="ag">Agence:</label>
+                <input type="text" id="ag" class="form-control" id="agence"  [(ngModel)]="client.agence" name="agence">
               </div>
 
               <div class="form-group">
-                <label>Genre:</label>
-                <input type="text" class="form-control" id="sexe"  [(ngModel)]="client.sexe" name="sexe">
+                <label for="sexe">Genre:</label>
+                <input type="text" id="sexe" class="form-control" id="sexe"  [(ngModel)]="client.sexe" name="sexe">
               </div>
-
-              <button type="submit" class="btn btn-success" (click)="onSubmit()">Submit</button>
+<div class="form-group">
+              <button type="submit" class="btn btn-block" (click)="onSubmit()">Submit</button>
+            </div>
             </form>
           </div>
-           </ion-list>
-          </div> 
-
-
-
-
-
- <div [(ngSwitch)]="relationship"> 
-  <ion-list *ngSwitchCase="'garant'"> 
-  <div [hidden]="submitted" style="width: 400px;">
-    <form>
-      <div class="form-group">
-        <label>Prénom</label>
-        <input type="text" class="form-control" id="prenom"  [(ngModel)]="garant.prenom" name="prenom">
-      </div>
-
-      <div class="form-group">
-        <label>Nom</label>
-        <input type="text" class="form-control" id="nom"  [(ngModel)]="garant.nom" name="nom">
-      </div>
-  
-      <div class="form-group">
-        <label>Telephone:</label>
-        <input type="number" class="form-control" id="telephone"  [(ngModel)]="garant.telephone" name="telephone">
-      </div>
-
-      <div class="form-group">
-        <label>Client:</label>
-        <input type="number" class="form-control" id="client"  [(ngModel)]="garant.client" name="client">
-      </div>
-
-      <button type="submit" class="btn btn-success" (click)="InSubmit()">Submit</button>
-    </form>
-   </div>
-  </ion-list>
-  </div>
-   
-
+        </div>
  
+</div>
 </ion-content> 

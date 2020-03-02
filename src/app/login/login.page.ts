@@ -14,6 +14,8 @@ export class LoginPage implements OnInit {
   submitted = false;
   loading = false;
   loginUserData = {}
+  public type = 'password'; 
+         public showPass = false; 
   constructor(private _authenfication: AuthentService,
     private _router :Router, public formBuilder: FormBuilder,private alertService: AlertService) { }
 
@@ -39,9 +41,9 @@ export class LoginPage implements OnInit {
     .subscribe(
       async res => {
         
-        let jwt= res.body['access_token']['accessToken'];
+        let jwt= res.body['token'];
         this._authenfication.saveToken(jwt);
-        this._authenfication.saveUser(res.body['user']);
+        // this._authenfication.saveUser(res.body['user']);
         this._router.navigate(['/todo']);
         
         //LocalStorage.setItem('token', res.token)
@@ -51,6 +53,14 @@ export class LoginPage implements OnInit {
       this.loading = false;
   });
    }
+  //  showPassword() {
+  //   this.showPass = !this.showPass;
+  //         if(this.showPass){
+  //             this.type = 'text';
+  //              } else {
+  //        this.type = 'password';
+  //      }
+  //    }
   //  isAdmin(){
   //    return this._authenfication.isAdmin()
   //  }

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start"><ion-back-button></ion-back-button></ion-buttons>
+
+      <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title> Controle permanent</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <h3>liste des garants</h3>
+  </ion-card>
+  <div >
+  <table>
+    <thead>
+      <tr>
+          <th scope="col">telephone</th>
+          <th scope="col">nom</th>
+          <th scope="col">prenom</th>
+          <th scope="col">modifier</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let u of listgarant">
+      
+         <td scope="row" data-label="telephone">{{u.telephone}}</td>
+         <td scope="row" data-label="nom">{{u.nom}}</td>
+         <td scope="row" data-label="prénom">{{u.prenom}}</td>
+     <td scope="row" data-label="modifier"><ion-button slot="end" color="energized" (click)="modifgarant(u.id)"> <ion-icon name="create"></ion-icon></ion-button> </td>
+
+    
+  </tr>
+</tbody>
+</table>
+</div>
+</ion-content>

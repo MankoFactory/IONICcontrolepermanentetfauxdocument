@@ -1,28 +1,29 @@
 
-  <ion-header style="background-color: #4dac27;"> 
-    <ion-toolbar color="green">
-      <ion-buttons slot="start">
-     
-        <ion-menu-button ></ion-menu-button>
-       </ion-buttons>
+  <ion-header > 
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start"><ion-back-button></ion-back-button></ion-buttons>
+    <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
       <ion-title style="text-align: center;">Details</ion-title>
     </ion-toolbar>
   </ion-header>
 
 
   <ion-content padding>
-    <div *ngIf="client">
+    
+    <!-- 
     <ion-row>
       <ion-col>
       <ion-item>
       <ion-label>telephone 1:</ion-label>
-      {{client.telephone}}
+      
       </ion-item>
       </ion-col>
       <ion-col>
       <ion-item>  
       <ion-label>Telephone 2:</ion-label>  
-      {{client.telephone1}}
+      
       </ion-item>
       </ion-col>
       </ion-row>
@@ -30,13 +31,13 @@
         <ion-col>
       <ion-item>
         <ion-label>Nom</ion-label>
-        {{client.nom}}
+        
       </ion-item>
     </ion-col>
     <ion-col>
       <ion-item>
         <ion-label>Prénom:</ion-label>
-        {{client.prenom}}
+        
       </ion-item>
     </ion-col>
     </ion-row> 
@@ -44,13 +45,13 @@
       <ion-col>
     <ion-item>
       <ion-label>Date naissance:</ion-label>
-      {{client.date_naissance}}
+      
     </ion-item>
   </ion-col>
   <ion-col>
     <ion-item>
       <ion-label>Lieu de naissance:</ion-label>
-      {{client.lieu_naissance}}
+      
     </ion-item>
   </ion-col>
   </ion-row> 
@@ -58,13 +59,13 @@
     <ion-col>
   <ion-item>
     <ion-label>Adresse client:</ion-label>
-    {{client.adresse_client}}
+    
   </ion-item>
   </ion-col>
   <ion-col>
   <ion-item>
     <ion-label>Activite:</ion-label>
-    {{client.activite}}
+    
   </ion-item>
   </ion-col>
   </ion-row>
@@ -72,13 +73,13 @@
   <ion-col>
   <ion-item>
   <ion-label>CNI:</ion-label>
- {{client.num_cni}}
+ 
   </ion-item>
   </ion-col>
   <ion-col>
   <ion-item>
   <ion-label>Agence:</ion-label>
-  {{client.agence}}
+  
   </ion-item>
   </ion-col>
   </ion-row>
@@ -86,18 +87,59 @@
     <ion-col>
       <ion-item>  
       <ion-label>Genre:</ion-label>  
-      {{client.sexe}}
+      
       </ion-item>
       </ion-col>
       <ion-col>
         <ion-item>
         <ion-label>Statut:</ion-label>
-        {{client.statut}}
+        
         </ion-item>
         </ion-col>
         
   </ion-row>
 
+</div> -->
+<div *ngIf="client">
+<div class="sc-user-profile">
+  <img class="avatar" src="assets/image/oo.jpg"  />
+  <div class="username">{{client.prenom}} {{client.nom}}</div>
+  <div class="bio">
+    Agence: {{client.agence}}
+  </div>
+  <div class="description">
+    Statut: {{client.statut}}
+  </div>
+  <div class="data">
+    <span class="entypo-eye"> Client Détails</span>
+  </div>
+  <div class="left">Téléphone 1:</div>
+  <div class="right">{{client.telephone}}</div>
+  <div class="left">Téléphone 2:</div>
+  <div class="right">{{client.telephone1}}</div>
+  <div class="left">Email:</div>
+  <div class="right">{{client.date_naissance}}</div>
+  <div class="left">Genre:</div>
+  <div class="right">{{client.sexe}}</div>
+  <div class="left">CNI:</div>
+  <div class="right">{{client.num_cni}}</div>
+  <div class="left">Activité:</div>
+  <div class="right">{{client.activite}}</div>
+  <div class="left">Adresse:</div>
+  <div class="right">{{client.adresse_client}}</div>
+  <div class="left">Lieu De Naissance:</div>
+  <div class="right">{{client.lieu_naissance}}</div>
+  <div class="left">Date De Naissance:</div>
+  <div class="right">{{client.date_naissance}}</div>
+  <div class="left">Latitude:</div>
+  <div class="right">{{client.date_naissance}}</div>
+  <div class="left">Longitude:</div>
+  <div class="right">{{client.date_naissance}}</div>
+  <div class="left">Commentaire du client:</div>
+  <div class="right">{{client.date_naissance}}</div>
+  <div class="left">Commentaire de l'agent:</div>
+  <div class="right">{{client.date_naissance}}</div>
+</div>
 </div>
    </ion-content>
 

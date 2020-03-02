@@ -14,6 +14,9 @@ ion-toolbar{
       color:rgb(34, 173, 34);
       background: rgb(69, 196, 69);
   }
+  ion-item{
+    font-weight: bold;
+  }
   ion-icon{
       color:white;
   }
@@ -23,3 +26,14 @@ ion-toolbar{
   .iconSize {
     font-size: 50px;
   }
+  .welcome-card{
+    background-color: #e28008;
+    color: white;
+    text-align: center;
+  }
+  @supports(position: sticky){ ion-card{
+    position: sticky;
+    top: 0;
+    }
+    }
+  

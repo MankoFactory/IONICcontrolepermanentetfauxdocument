@@ -127,10 +127,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NewpasswordPage = /** @class */ (function () {
-    function NewpasswordPage(route, _auth) {
+    function NewpasswordPage(route, _auth, router) {
         var _this = this;
         this.route = route;
         this._auth = _auth;
+        this.router = router;
         this.error = [];
         this.form = {
             email: null,
@@ -144,10 +145,15 @@ var NewpasswordPage = /** @class */ (function () {
     };
     NewpasswordPage.prototype.Newpassword = function () {
         this._auth.newpassword(this.form).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
+        this.glo();
+    };
+    NewpasswordPage.prototype.glo = function () {
+        this.router.navigate(["/login"]);
     };
     NewpasswordPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-        { type: _services_authent_service__WEBPACK_IMPORTED_MODULE_3__["AuthentService"] }
+        { type: _services_authent_service__WEBPACK_IMPORTED_MODULE_3__["AuthentService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
     ]; };
     NewpasswordPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -155,7 +161,7 @@ var NewpasswordPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./newpassword.page.html */ "./node_modules/raw-loader/index.js!./src/app/newpassword/newpassword.page.html"),
             styles: [__webpack_require__(/*! ./newpassword.page.scss */ "./src/app/newpassword/newpassword.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_authent_service__WEBPACK_IMPORTED_MODULE_3__["AuthentService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_authent_service__WEBPACK_IMPORTED_MODULE_3__["AuthentService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], NewpasswordPage);
     return NewpasswordPage;
 }());

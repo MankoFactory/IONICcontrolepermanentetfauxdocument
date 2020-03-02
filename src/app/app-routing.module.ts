@@ -12,11 +12,14 @@ const routes: Routes = [
      path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
    },
-  // {
-  //   path: 'navbar',
-  //   loadChildren: () => import('./navbar/navbar.module').then( m => m.NavbarPageModule)
-  // },
- 
+   {
+     path: 'garantupdate/:id',
+     loadChildren: () => import('./garantupdate/garantupdate.module').then( m => m.GarantupdatePageModule)
+   },
+   {
+    path: 'garantliste',
+    loadChildren: () => import('./garantliste/garantliste.module').then( m => m.GarantlistePageModule)
+  },
    {
     path: 'donnees/:id',
     loadChildren: () => import('./donnees/donnees.module').then( m => m.DonneesPageModule)
@@ -38,6 +41,14 @@ const routes: Routes = [
   {
     path: 'newpassword',
     loadChildren: () => import('./newpassword/newpassword.module').then( m => m.NewpasswordPageModule)
+  },
+  {
+    path: 'garantliste',
+    loadChildren: () => import('./garantliste/garantliste.module').then( m => m.GarantlistePageModule)
+  },
+  {
+    path: 'garantupdate',
+    loadChildren: () => import('./garantupdate/garantupdate.module').then( m => m.GarantupdatePageModule)
   },
   // {
   //   path: 'login',

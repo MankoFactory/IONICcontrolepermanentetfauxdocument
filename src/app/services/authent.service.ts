@@ -36,71 +36,61 @@ private _todo=" http://localhost:8000/api/visite";
   constructor(private http: HttpClient,
     private _router:Router) {}
    
-   ajoutUser( User ){
-    const endpoint = 'http://localhost:8000/api/client';
-   const formData: FormData = new FormData();
-   formData.append('photo_venture',User.photo_venture);
-   formData.append('photo_activite',User.photo_activite);
-    formData.append('prenom',User.prenom);
-    formData.append('nom',User.nom);
-   formData.append('num_cni',User.num_cni);
-    formData.append('adresse_client',User.adresse_client);
-     formData.append('telephone1',User.telephone1);
-     formData.append('telephone',User.telephone);
-    formData.append('date_naissance',User.date_naissance);
-    formData.append('lieu_naissance',User.lieu_naissance);
-    formData.append('activite',User.activite);
-    formData.append('agence',User.agence);
-    formData.append('sexe',User.sexe);
-  //   formData.append('compte',User.compte);
-    return this.http.post(endpoint, formData,this.headers);
+   ajoutUser(fd:FormData ){
+  
+    return this.http.post(environment.baseUrl+"client", fd,this.headers);
 
  }
- login(email, password){
-  return this.http.post<any>(this._loginUrl,{ email, password }, {observe: 'response'})
+//  login(email, password){
+//   return this.http.post<any>(this._loginUrl,{ email, password }, {observe: 'response'})
   
-}
+// }
 
-  // login(email, password){
-  //   return this.http.post<any>(environment.baseUrl+"login",{ email, password }, {observe: 'response'})
+  login(email, password){
+    return this.http.post<any>(environment.baseUrl+"login",{ email, password }, {observe: 'response'})
     
-  // }
+   }
    sendmail(User){
-     return this.http.post<any>(this._sendmail, User,this.headers)
+     return this.http.post<any>(environment.baseUrl+"password/email", User,this.headers)
    }
 
    newpassword(aaa){
-    return this.http.post<any>(this._newpassword, aaa,this.headers)
+    return this.http.post<any>(environment.baseUrl+"password/reset", aaa,this.headers)
   }
 
 
   listUser(){
-    return this.http.get<any>(this._ajoutuser,this.headers)
+    return this.http.get<any>(environment.baseUrl+"client",this.headers)
   }
   todo(){
-    return this.http.get<any>(this._todo,this.headers)
+    return this.http.get<any>(environment.baseUrl+"visite",this.headers)
   }
   garant(garant){
-    return this.http.post<any>(this._ajoutgarant,garant, this.headers)
+    return this.http.post<any>(environment.baseUrl+"garant",garant, this.headers)
+  }
+  listgarant(){
+    return this.http.get<any>(environment.baseUrl+"garant", this.headers)
   }
   details(id:number):Observable<any>{
-    return this.http.get(`${this._ajoutuser}/${id}`,this.headers)
+    return this.http.get(`${environment.baseUrl+"client"}/${id}`,this.headers)
   }
   update(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this._Updateclient}/${id}`, value,this.headers);
+    return this.http.post(`${environment.baseUrl+"updateClient"}/${id}`, value,this.headers);
   }
  
   updategarant(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this._ajoutgarant}/${id}`, value,this.headers);
+    return this.http.post(`${environment.baseUrl+"updategarant"}/${id}`, value,this.headers);
   }
   
-  // loggedIn(){
-  //   return !!localStorage.getItem('token')
-  //}
-  /* logoutUser(){
+ loggedIn(){
+     return !!localStorage.getItem('token')
+  }
+ 
+  logoutUser(){
     localStorage.removeItem('token')
     this._router.navigate(['/login'])
-   } */
+    this.initParams();
+   } 
   //  getListUser(){
   //   return this.http.get<any>(this._listuserUrl)
   // }
@@ -115,9 +105,9 @@ private _todo=" http://localhost:8000/api/visite";
       let objJWT = jwtHelper.decodeToken(this.jwt);
       console.log(objJWT);
       this.email=objJWT.email;
-      console.log(this.email)
+      // console.log(this.email)
       this.roles=objJWT.roles;
-      console.log(this.roles);
+      // console.log(this.roles);
     }
 
     saveUser(user: any) {

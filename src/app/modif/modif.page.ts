@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ModifPage implements OnInit {
   id:number
   client:RegisterModel;
-  garant:GarantModel
+  // garant:GarantModel
   constructor(private _aut:AuthentService,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
@@ -29,8 +29,6 @@ export class ModifPage implements OnInit {
       
     )
 
-    this.garant=new GarantModel();
-    this.id = this.route.snapshot.params['id'];
    
     
   }
@@ -45,22 +43,13 @@ export class ModifPage implements OnInit {
     this.gotoList();
   }
 
-  updategarant() {
-    this._aut.updategarant(this.id, this.garant)
-      .subscribe(data => console.log(data)
-      
-    , error => console.log(error));
-    //  this.client = new RegisterModel();
-    this.gotoList();
-  }
+  
 
   onSubmit() {
     this.update(); 
     
   }
-  Insubmit(){
-    this.updategarant();
-  }
+ 
 
   gotoList() {
     this.router.navigate(['/home']);

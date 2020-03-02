@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router'
 import { from } from 'rxjs';
 import { AuthentService } from '../services/authent.service'
+import { getLocaleTimeFormat } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-newpassword',
@@ -16,7 +19,7 @@ public form ={
   password_confirmation:null,
   token:null
 }
-  constructor(private route:ActivatedRoute, private _auth:AuthentService) {
+  constructor(private route:ActivatedRoute, private _auth:AuthentService,private router:Router) {
 
     route.queryParams.subscribe(
       params => this.form.token = params['token']
@@ -31,6 +34,11 @@ public form ={
       error=> console.log(error)
       
     )
+    this.glo();
+  }
+  glo()
+  {
+    this.router.navigate(["/login"])
   }
 
 }

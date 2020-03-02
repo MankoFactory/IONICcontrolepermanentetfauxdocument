@@ -7,27 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\"><ion-back-button></ion-back-button></ion-buttons>\n    <ion-buttons slot=\"end\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title>Enregistrement d'un client</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-card >\n         <img src=\"/assets/img/LOGO-VERT.png\" alt=\"\" />\n        <!-- <ion-card-header>\n           <ion-card-subtitle>Bienvenue à l'apllication controle permanent.</ion-card-subtitle>\n          <ion-card-title>  Et détection de faux documents\n            \n            </ion-card-title> \n        </ion-card-header> -->\n        <ion-card-content style=\"text-align: center;\">\n          <p style=\"font-size: 20px;\">\n           Modification d'un client         \n          </p>\n        </ion-card-content>\n    </ion-card>\n\n\n    \n  <div class=\"ion-padding\">\n    <ion-segment  [(ngModel)]=\"relationship\" color=\"primary\" >\n      <ion-segment-button id=\"choix1\"  value=\"client\">\n        Client\n    \n      </ion-segment-button>\n      <ion-segment-button id=\"choix2\"  value=\"garant\">\n        Garant\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n \n    <div [(ngSwitch)]=\"relationship\"> \n        <ion-list *ngSwitchCase=\"'client'\"> \n          <div [hidden]=\"submitted\" style=\"width: 400px;\">\n            <form >\n\n              <div class=\"form-group\">\n                <label >Telephone 1</label>\n                <input type=\"tel\" class=\"form-control\" id=\"telephone\"  [(ngModel)]=\"client.telephone\" name=\"telephone\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label >Telephone 2</label>\n                <input type=\"tel\" class=\"form-control\" id=\"telephone1\" [(ngModel)]=\"client.telephone1\" name=\"telephone1\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label>Nom:</label>\n                <input type=\"text\" class=\"form-control\" id=\"nom\"  [(ngModel)]=\"client.nom\" name=\"nom\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Prénom:</label>\n                <input type=\"text\" class=\"form-control\" id=\"prenom\"  [(ngModel)]=\"client.prenom\" name=\"prenom\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Date de naissance:</label>\n                <input type=\"date\" class=\"form-control\" id=\"date_naissance\"  [(ngModel)]=\"client.date_naissance\" name=\"date_naissance\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Lieu naissance:</label>\n                <input type=\"text\" class=\"form-control\" id=\"lieu_naissance\"  [(ngModel)]=\"client.lieu_naissance\" name=\"lieu_naissance\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>CNI:</label>\n                <input type=\"number\" class=\"form-control\" id=\"num_cni\"  [(ngModel)]=\"client.num_cni\" name=\"num_cni\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label>Adresse:</label>\n                <input type=\"text\" class=\"form-control\" id=\"addresse_client\"  [(ngModel)]=\"client.addresse_client\" name=\"addresse_client\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Activité:</label>\n                <input type=\"text\" class=\"form-control\" id=\"activite\"  [(ngModel)]=\"client.activite\" name=\"activite\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Agence:</label>\n                <input type=\"text\" class=\"form-control\" id=\"agence\"  [(ngModel)]=\"client.agence\" name=\"agence\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Genre:</label>\n                <input type=\"text\" class=\"form-control\" id=\"agence\"  [(ngModel)]=\"client.sexe\" name=\"agence\">\n              </div>\n\n              <button type=\"submit\" class=\"btn btn-success\" (click)=\"onSubmit()\">Submit</button>\n            </form>\n          </div>\n          </ion-list>\n          </div>\n\n\n\n\n\n <div [(ngSwitch)]=\"relationship\"> \n  <ion-list *ngSwitchCase=\"'garant'\">\n    <div [hidden]=\"submitted\" style=\"width: 400px;\">\n    <form>\n      <div class=\"form-group\">\n        <label>Prénom</label>\n        <input type=\"text\" class=\"form-control\" id=\"prenom\"  [(ngModel)]=\"garant.prenom\" name=\"prenom\">\n      </div>\n\n      <div class=\"form-group\">\n        <label>Nom</label>\n        <input type=\"text\" class=\"form-control\" id=\"nom\"  [(ngModel)]=\"garant.nom\" name=\"nom\">\n      </div>\n  \n      <div class=\"form-group\">\n        <label>Telephone:</label>\n        <input type=\"number\" class=\"form-control\" id=\"telephone\"  [(ngModel)]=\"garant.telephone\" name=\"telephone\">\n      </div>\n\n      <div class=\"form-group\">\n        <label>Client:</label>\n        <input type=\"number\" class=\"form-control\" id=\"client\"  [(ngModel)]=\"garant.client\" name=\"client\">\n      </div>\n\n      <button type=\"submit\" class=\"btn btn-success\" (click)=\"InSubmit()\">Submit</button>\n    </form>\n   </div>\n  </ion-list>\n  </div>\n  \n\n \n</ion-content> \n"
-
-/***/ }),
-
-/***/ "./src/app/modeles/garant.model.ts":
-/*!*****************************************!*\
-  !*** ./src/app/modeles/garant.model.ts ***!
-  \*****************************************/
-/*! exports provided: GarantModel */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GarantModel", function() { return GarantModel; });
-var GarantModel = /** @class */ (function () {
-    function GarantModel() {
-    }
-    return GarantModel;
-}());
-
-
+module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\"><ion-back-button></ion-back-button></ion-buttons>\n    <ion-buttons slot=\"end\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n    <ion-title></ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-card >\n         <!-- <img src=\"/assets/img/LOGO-VERT.png\" alt=\"\" /> -->\n        <!-- <ion-card-header>\n           <ion-card-subtitle>Bienvenue à l'apllication controle permanent.</ion-card-subtitle>\n          <ion-card-title>  Et détection de faux documents\n            \n            </ion-card-title> \n        </ion-card-header> -->\n        <ion-card-content style=\"text-align: center;\">\n          <p style=\"font-size: 20px;\">\n           Modification d'un client         \n          </p>\n        </ion-card-content>\n    </ion-card>\n\n\n    \n  <!-- <div class=\"ion-padding\">\n    <ion-segment  [(ngModel)]=\"relationship\" color=\"primary\" >\n      <ion-segment-button id=\"choix1\"  value=\"client\">\n        Client\n    \n      </ion-segment-button>\n      <ion-segment-button id=\"choix2\"  value=\"garant\">\n        Garant\n      </ion-segment-button>\n    </ion-segment>\n  </div>  -->\n \n    <div> \n      <ion-card>\n        <ion-list >  \n          <div [hidden]=\"submitted\" >\n            <form >\n\n              <div class=\"form-group\">\n                <label >Telephone 1</label>\n                <input type=\"tel\" class=\"form-control\" id=\"telephone\"  [(ngModel)]=\"client.telephone\" name=\"telephone\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label >Telephone 2</label>\n                <input type=\"tel\" class=\"form-control\" id=\"telephone1\" [(ngModel)]=\"client.telephone1\" name=\"telephone1\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label>Nom:</label>\n                <input type=\"text\" class=\"form-control\" id=\"nom\"  [(ngModel)]=\"client.nom\" name=\"nom\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Prénom:</label>\n                <input type=\"text\" class=\"form-control\" id=\"prenom\"  [(ngModel)]=\"client.prenom\" name=\"prenom\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Date de naissance:</label>\n                <input type=\"date\" class=\"form-control\" id=\"date_naissance\"  [(ngModel)]=\"client.date_naissance\" name=\"date_naissance\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Lieu naissance:</label>\n                <input type=\"text\" class=\"form-control\" id=\"lieu_naissance\"  [(ngModel)]=\"client.lieu_naissance\" name=\"lieu_naissance\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>CNI:</label>\n                <input type=\"number\" class=\"form-control\" id=\"num_cni\"  [(ngModel)]=\"client.num_cni\" name=\"num_cni\">\n              </div>\n          \n              <div class=\"form-group\">\n                <label>Adresse:</label>\n                <input type=\"text\" class=\"form-control\" id=\"adresse_client\"  [(ngModel)]=\"client.adresse_client\" name=\"adresse_client\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Activité:</label>\n                <input type=\"text\" class=\"form-control\" id=\"activite\"  [(ngModel)]=\"client.activite\" name=\"activite\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Agence:</label>\n                <input type=\"text\" class=\"form-control\" id=\"agence\"  [(ngModel)]=\"client.agence\" name=\"agence\">\n              </div>\n\n              <div class=\"form-group\">\n                <label>Genre:</label>\n                <input type=\"text\" class=\"form-control\" id=\"sexe\"  [(ngModel)]=\"client.sexe\" name=\"sexe\">\n              </div>\n<div class=\"form-group\">\n              <button type=\"submit\" class=\"btn btn-block\" (click)=\"onSubmit()\">Submit</button>\n            </div>\n            </form>\n          </div>\n           </ion-list>\n          </ion-card>\n          </div> \n       \n\n\n\n\n <!-- <div [(ngSwitch)]=\"relationship\"> \n  <ion-list *ngSwitchCase=\"'garant'\"> \n  \n  </ion-list>\n  </div> -->\n   \n\n \n</ion-content> \n"
 
 /***/ }),
 
@@ -124,7 +104,7 @@ var ModifPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-item {\n  margin-left: auto;\n  margin-right: auto;\n  width: 400px;\n}\n\nion-toolbar {\n  background-color: 0;\n}\n\nion-title {\n  color: white;\n}\n\n.form-group .btn {\n  color: #fff;\n  border-radius: 30px;\n  background: #04B404;\n  line-height: normal;\n  display: inline-block;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kaWYvQzpcXFVzZXJzXFxTZXluYWJvdSBOZGlheWVcXG1hbmtvLWFwcC1pb25pYy9zcmNcXGFwcFxcbW9kaWZcXG1vZGlmLnBhZ2Uuc2NzcyIsInNyYy9hcHAvbW9kaWYvbW9kaWYucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURDQTtFQUNJLG1CQUFBO0FDRUo7O0FEQUU7RUFDRSxZQUFBO0FDR0o7O0FEREE7RUFDQyxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBQUE7QUNJRCIsImZpbGUiOiJzcmMvYXBwL21vZGlmL21vZGlmLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1pdGVte1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87ICBcclxuICAgIHdpZHRoOiA0MDBweDtcclxufVxyXG5pb24tdG9vbGJhcntcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGdyZWVuKCRjb2xvcjogIzAwMDAwMCk7XHJcbiAgfVxyXG4gIGlvbi10aXRsZXtcclxuICAgIGNvbG9yOiAgd2hpdGU7XHJcbn1cclxuLmZvcm0tZ3JvdXAgLmJ0bntcclxuXHRjb2xvcjogI2ZmZjtcclxuXHRib3JkZXItcmFkaXVzOiAzMHB4O1xyXG5cdGJhY2tncm91bmQ6ICMwNEI0MDQ7XHJcblx0bGluZS1oZWlnaHQ6IG5vcm1hbDtcclxuXHRkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcblx0XHJcbn0iLCJpb24taXRlbSB7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIHdpZHRoOiA0MDBweDtcbn1cblxuaW9uLXRvb2xiYXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAwO1xufVxuXG5pb24tdGl0bGUge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5mb3JtLWdyb3VwIC5idG4ge1xuICBjb2xvcjogI2ZmZjtcbiAgYm9yZGVyLXJhZGl1czogMzBweDtcbiAgYmFja2dyb3VuZDogIzA0QjQwNDtcbiAgbGluZS1oZWlnaHQ6IG5vcm1hbDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xufSJdfQ== */"
+module.exports = "ion-item {\n  margin-left: auto;\n  margin-right: auto;\n  width: 400px;\n}\n\nion-toolbar {\n  background-color: 0;\n}\n\nion-title {\n  color: white;\n}\n\n.form-group .btn {\n  color: #fff;\n  border-radius: 30px;\n  background: #04B404;\n  line-height: normal;\n  display: inline-block;\n}\n\nion-card {\n  background-color: #e28008;\n  text-align: center;\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kaWYvQzpcXFVzZXJzXFxTZXluYWJvdSBOZGlheWVcXG1hbmtvLWFwcC1pb25pYy9zcmNcXGFwcFxcbW9kaWZcXG1vZGlmLnBhZ2Uuc2NzcyIsInNyYy9hcHAvbW9kaWYvbW9kaWYucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURDQTtFQUNJLG1CQUFBO0FDRUo7O0FEQUU7RUFDRSxZQUFBO0FDR0o7O0FEREE7RUFDQyxXQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBQUE7QUNJRDs7QUREQTtFQUNFLHlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0FDSUYiLCJmaWxlIjoic3JjL2FwcC9tb2RpZi9tb2RpZi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taXRlbXtcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvOyAgXHJcbiAgICB3aWR0aDogNDAwcHg7XHJcbn1cclxuaW9uLXRvb2xiYXJ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbigkY29sb3I6ICMwMDAwMDApO1xyXG4gIH1cclxuICBpb24tdGl0bGV7XHJcbiAgICBjb2xvcjogIHdoaXRlO1xyXG59XHJcbi5mb3JtLWdyb3VwIC5idG57XHJcblx0Y29sb3I6ICNmZmY7XHJcblx0Ym9yZGVyLXJhZGl1czogMzBweDtcclxuXHRiYWNrZ3JvdW5kOiAjMDRCNDA0O1xyXG5cdGxpbmUtaGVpZ2h0OiBub3JtYWw7XHJcblx0ZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG5cdFxyXG59XHJcbmlvbi1jYXJke1xyXG4gIGJhY2tncm91bmQtY29sb3I6I2UyODAwOCA7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxufSIsImlvbi1pdGVtIHtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgd2lkdGg6IDQwMHB4O1xufVxuXG5pb24tdG9vbGJhciB7XG4gIGJhY2tncm91bmQtY29sb3I6IDA7XG59XG5cbmlvbi10aXRsZSB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuLmZvcm0tZ3JvdXAgLmJ0biB7XG4gIGNvbG9yOiAjZmZmO1xuICBib3JkZXItcmFkaXVzOiAzMHB4O1xuICBiYWNrZ3JvdW5kOiAjMDRCNDA0O1xuICBsaW5lLWhlaWdodDogbm9ybWFsO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG59XG5cbmlvbi1jYXJkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2UyODAwODtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogd2hpdGU7XG59Il19 */"
 
 /***/ }),
 
@@ -142,9 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_authent_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/authent.service */ "./src/app/services/authent.service.ts");
 /* harmony import */ var _modeles_register_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modeles/register.model */ "./src/app/modeles/register.model.ts");
-/* harmony import */ var _modeles_garant_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modeles/garant.model */ "./src/app/modeles/garant.model.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 
 
 
@@ -152,6 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // import swal from 'sweetalert';
 var ModifPage = /** @class */ (function () {
+    // garant:GarantModel
     function ModifPage(_aut, route, router) {
         this._aut = _aut;
         this.route = route;
@@ -165,8 +144,6 @@ var ModifPage = /** @class */ (function () {
             console.log(data);
             _this.client = data;
         }, function (error) { return console.log(error); });
-        this.garant = new _modeles_garant_model__WEBPACK_IMPORTED_MODULE_4__["GarantModel"]();
-        this.id = this.route.snapshot.params['id'];
     };
     ModifPage.prototype.update = function () {
         this._aut.update(this.id, this.client)
@@ -176,25 +153,16 @@ var ModifPage = /** @class */ (function () {
         //  this.client = new RegisterModel();
         this.gotoList();
     };
-    ModifPage.prototype.updategarant = function () {
-        this._aut.updategarant(this.id, this.garant)
-            .subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
-        //  this.client = new RegisterModel();
-        this.gotoList();
-    };
     ModifPage.prototype.onSubmit = function () {
         this.update();
-    };
-    ModifPage.prototype.Insubmit = function () {
-        this.updategarant();
     };
     ModifPage.prototype.gotoList = function () {
         this.router.navigate(['/home']);
     };
     ModifPage.ctorParameters = function () { return [
         { type: _services_authent_service__WEBPACK_IMPORTED_MODULE_2__["AuthentService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
     ]; };
     ModifPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -202,7 +170,7 @@ var ModifPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./modif.page.html */ "./node_modules/raw-loader/index.js!./src/app/modif/modif.page.html"),
             styles: [__webpack_require__(/*! ./modif.page.scss */ "./src/app/modif/modif.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authent_service__WEBPACK_IMPORTED_MODULE_2__["AuthentService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_authent_service__WEBPACK_IMPORTED_MODULE_2__["AuthentService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], ModifPage);
     return ModifPage;
 }());

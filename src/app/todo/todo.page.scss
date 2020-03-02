@@ -1,21 +1,30 @@
 ion-item{
-    margin-left: auto;
-    margin-right: auto;  
-    width: 300px;
+   margin: 15px; 
+   font-weight: bold;
+    
 }
 ion-toolbar{
     background-color: green($color: #000000);
   }
   ion-title{
-      color:  white;
+     font-size: 15px;
+     text-align: center;
   }
   ion-button{
-    color:rgb(34, 173, 34);
-    background: rgb(69, 196, 69);
+    // color:rgb(34, 173, 34);
+    // background: rgb(69, 196, 69);
+    background:#50A125 ;
+
   }
   ion-icon{
       color:white;
   }
   h2{
     color:#50A125; 
+  }
+  ion-card-content{
+   background-color: #e28008;
+  color: white;
+  
+
   }

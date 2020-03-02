@@ -2,7 +2,6 @@ export class RegisterModel {
   
         public nom: string;
         public prenom: string;
-        
         public date_naissance: Date;
         public lieu_naissance: string;
         public activite: string;
@@ -15,9 +14,9 @@ export class RegisterModel {
         public agence: string;
         public num_cni: number;
         public sexe: string;
-       public client_latitude:any;
-       public client_longitude:any;
-       public activite_latitude:any;
-       public activite_longitude:any;
+        public latitude:number;
+        public longitude:number;
+        public commentaire:string;
+        public avis:string;
 
 }
