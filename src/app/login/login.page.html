@@ -1,52 +1,24 @@
 
 <ion-header no-border>
-   <!-- <ion-toolbar color="primary">
-   <img src="assets/logoblancgris.png" class="logo-img" height="100px">
-
-   </ion-toolbar> -->
+  
   
 </ion-header>
 <ion-content>
-<!-- <div class="center">
-  <div heading-column-lr>
-    <h4 class="modal-title"><img src="assets/image/imoo.png" alt=""></h4>
-     <h2 small-heading>S'enregistrer</h2> 
-  </div>
- 
-    
-      
-      <input type="text" placeholder="Email"  />
-     
-  </div>
-  
-    <input type="password" placeholder="Mot de passe"  />
-   
-</div>
 
-
-        
-  
-   <div style="text-align: center;">
-    <a [routerLink]="['/resetpassword']" class="small-text" >Mot de passe oublié?</a>
-    </div>
-
-</div> -->
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-    <!-- <h2 class="active"> Sign In </h2> -->
-
-    <!-- Icon -->
+   
     <div class="fadeIn first">
       <img src="/assets/img/LOGO-VERT.png" id="icon" alt="User Icon" />
     </div>
 
-    <!-- Login Form -->
+  
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()" style="margin-top: 30px;" >
       <div class="form-group inputIconBg" >
-          <input type="text" id="email"  name="email" placeholder="Email" formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-          <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+          <ion-input type="text" id="email"  name="email" placeholder="Email" formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+            <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+          </ion-input>
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">Veuillez saisir votre adresse email</div>
         <div *ngIf="f.email.errors.email">Veuillez saisir un mail valide</div>
@@ -54,27 +26,25 @@
     </div>
   
     <div class="form-group inputIconBg">
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe"formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-      <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>     
+      <ion-input type="password" id="password" class="fadeIn third" name="login" placeholder="Mot de passe"formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <i class="fa fa-lock fa-lg fa-fw" ></i> 
+      </ion-input> 
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
         <div *ngIf="f.password.errors.required">Veuillez saisir votre mot de passe</div>
         <div *ngIf="f.password.errors.minlength">Veuillez saisir un mot de passe valide</div>
     </div>
     </div>
     
-      <!-- <div class="field">
-        <input type="text" name="fullname" id="fullname" placeholder="fullname">
-<label for="fullname"> NAME</label>
-      </div> -->
+     
    
     <div class="form-group">
-      <input type="submit" class="fadeIn fourth" [disabled]="loading" value="Connexion" >
+      <ion-input type="submit" class="fadeIn fourth" [disabled]="loading" value="Connexion" > </ion-input>
     </div>
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Mot de passe oublié?</a>
+      <a class="underlineHover" routerLink="/resetpassword">Mot de passe oublié?</a>
     </div>
 
   </div>
