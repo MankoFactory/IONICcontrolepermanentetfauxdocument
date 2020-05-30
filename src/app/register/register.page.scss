@@ -233,6 +233,16 @@ div{
   .garant{
     float: right;
   }
+  ion-card{
+    text-align: center;
+    color: white;
+    background-color:#e28008 ;
+  }
+  @supports(position: sticky){ ion-card{
+    position: sticky;
+    top: 0;
+    }
+  }
   
   
 

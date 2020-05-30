@@ -12,11 +12,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <h3>liste des clients</h3>
-       
-      </ion-card>
-      <ion-card>
+    <ion-card >
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: 20px;">
+           liste des clients  
+          </p>
+        </ion-card-content>
+    </ion-card>
+   
         
           <ion-list>
             <h2 *ngFor="let u of listuser">
@@ -29,6 +32,6 @@
             </h2>
           </ion-list>
        
-      </ion-card>
+   
 </ion-content>
 

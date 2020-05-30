@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Camera } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/File/ngx';
+import { AuthentService } from './services/authent.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx'; 
 
@@ -25,7 +27,8 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     // BrowserAnimationsModule,
     ReactiveFormsModule],
   providers: [
-   
+   AuthGuardService,
+   AuthentService,
     StatusBar,
     Camera,
     File,

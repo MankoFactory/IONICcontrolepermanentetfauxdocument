@@ -313,6 +313,13 @@
   <div class="form-container">
   <div [(ngSwitch)]="relationship"> 
     <ion-list *ngSwitchCase="'garant'">
+      <ion-card >
+        <ion-card-content style="text-align: center;">
+          <p style="font-size: 20px;">
+           Ajouter garant         
+          </p>
+        </ion-card-content>
+    </ion-card>
       <form [formGroup]="garantForm" (ngSubmit)="ajoutgarant()" role="form">
     
       <div class="form-group">

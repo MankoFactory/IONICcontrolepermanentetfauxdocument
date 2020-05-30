@@ -5,20 +5,26 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import {BehaviorSubject, Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
 import {environment} from '../../environments/environment';
+import { RegisterModel } from '../modeles/register.model';
+import { map } from 'rxjs/operators';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentService {
-  private _Updateclient="http://localhost:8000/api/updateClient";
-  private _Updategarant="http://localhost:8000/api/updategarant";
-  private _loginUrl = "http://localhost:8000/api/login";
-private _ajoutuser="http://localhost:8000/api/client";
-private _ajoutgarant="http://localhost:8000/api/garant";
-private _sendmail="http://localhost:8000/api/password/email";
-private _newpassword=" http://localhost:8000/api/password/reset";
-private _todo=" http://localhost:8000/api/visite";
+  private currentUserSubject: BehaviorSubject<RegisterModel>;
+  public currentUser: Observable<RegisterModel>; 
+
+//   private _Updateclient="http://localhost:8000/api/updateClient";
+//   private _Updategarant="http://localhost:8000/api/updategarant";
+//   private _loginUrl = "http://localhost:8000/api/login";
+// private _ajoutuser="http://localhost:8000/api/client";
+// private _ajoutgarant="http://localhost:8000/api/garant";
+// private _sendmail="http://localhost:8000/api/password/email";
+// private _newpassword=" http://localhost:8000/api/password/reset";
+// private _todo=" http://localhost:8000/api/visite";
 
 
   jwt : string;
@@ -26,7 +32,6 @@ private _todo=" http://localhost:8000/api/visite";
  roles: string;
   navigate: any;
   // _router: any;
-
   private headers = {
     headers: new HttpHeaders().set(
       "Authorization",
@@ -34,8 +39,14 @@ private _todo=" http://localhost:8000/api/visite";
     )
   };
   constructor(private http: HttpClient,
-    private _router:Router) {}
+    private _router:Router) {
+      this.currentUserSubject = new BehaviorSubject<RegisterModel>(JSON.parse(localStorage.getItem('currentUser')));
+      this.currentUser = this.currentUserSubject.asObservable();
+    }
    
+    public get currentUserValue(): RegisterModel {
+      return this.currentUserSubject.value;
+  }
    ajoutUser(fd:FormData ){
   
     return this.http.post(environment.baseUrl+"client", fd,this.headers);
@@ -48,6 +59,12 @@ private _todo=" http://localhost:8000/api/visite";
 
   login(email, password){
     return this.http.post<any>(environment.baseUrl+"login",{ email, password }, {observe: 'response'})
+    .pipe(map(user => {
+      // store user details and jwt token in local storage to keep user logged in between page refreshes
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    //  this.currentUserSubject.next(user);
+      return user;
+  }))
     
    }
    sendmail(User){
@@ -71,6 +88,9 @@ private _todo=" http://localhost:8000/api/visite";
   listgarant(){
     return this.http.get<any>(environment.baseUrl+"garant", this.headers)
   }
+  detailsgarant(id:number):Observable<any>{
+    return this.http.get(`${environment.baseUrl+"garant"}/${id}`,this.headers)
+  }
   details(id:number):Observable<any>{
     return this.http.get(`${environment.baseUrl+"client"}/${id}`,this.headers)
   }
@@ -82,18 +102,7 @@ private _todo=" http://localhost:8000/api/visite";
     return this.http.post(`${environment.baseUrl+"updategarant"}/${id}`, value,this.headers);
   }
   
- loggedIn(){
-     return !!localStorage.getItem('token')
-  }
- 
-  logoutUser(){
-    localStorage.removeItem('token')
-    this._router.navigate(['/login'])
-    this.initParams();
-   } 
-  //  getListUser(){
-  //   return this.http.get<any>(this._listuserUrl)
-  // }
+
     saveToken(jwt:string)
     {
       localStorage.setItem('token',jwt);
@@ -125,40 +134,37 @@ private _todo=" http://localhost:8000/api/visite";
   loggIn(){
     return !!localStorage.getItem('token')
   }
-  logOut(){
-    localStorage.removeItem('token')
-    this._router.navigate(['/login'])
-    this.initParams();
+  logout() {
+    // remove user from local storage and set current user to null
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
   }
+ 
   initParams(){
     this.jwt=undefined;
     this.email=undefined;
     //this.roles=undefined;
   }
-// isAdmin() {
-//     return this.roles.indexOf('ROLE_ADMIN') >= 0;
 
-// }
-// isSuperAdmin() {
-//     return this.roles.indexOf('ROLE_SUPER_ADMIN') >= 0;
+ isAgent() {
+     return this.roles.indexOf('ROLE_AGENT') >= 0;
+ }
+ isAuthenticated() {
+     return this.roles && (this.isAgent());
 
-// }
-// isCaissier() {
-//   return this.roles.indexOf('ROLE_CAISSIER') >= 0;
-
-// }
-// isUser() {
-//     return this.roles.indexOf('ROLE_USER') >= 0;
-// }
-// isAuthenticated() {
-//     return this.roles && (this.isAdmin() || this.isUser() || this.isCaissier);
-
-// }
+}
 //   loadToken(){
 //     this.jwt=localStorage.getItem('token');
 //     this.parseJWT();
 //   }
 
+logoute() {
+  if (window.confirm('Vous etes sure de vouloir déconnecter ?')) {
+  localStorage.removeItem('token');
+  this.jwt = undefined;
+  this.email = undefined;
+  this.roles = undefined;
+}
 
-
+}
 }

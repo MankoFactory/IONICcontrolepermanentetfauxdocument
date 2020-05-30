@@ -22,9 +22,13 @@ ion-toolbar{
   h2{
     color:#50A125; 
   }
-  ion-card-content{
-   background-color: #e28008;
-  color: white;
-  
-
+  ion-card{
+    text-align: center;
+    color: white;
+    background-color:#e28008 ;
   }
+  @supports(position: sticky){ ion-card{
+    position: sticky;
+    top: 0;
+    }
+    }

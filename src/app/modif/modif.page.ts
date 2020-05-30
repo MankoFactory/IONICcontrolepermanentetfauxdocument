@@ -3,6 +3,7 @@ import { AuthentService } from '../services/authent.service'
 import { RegisterModel } from '../modeles/register.model';
 import { GarantModel } from '../modeles/garant.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm} from '@angular/forms';
 // import swal from 'sweetalert';
 
 @Component({
@@ -11,6 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./modif.page.scss'],
 })
 export class ModifPage implements OnInit {
+  nomPattern = "^[A-Za-z]{2,}$";
+  cniPattern= "^[0-9]{9}$";
+  telephonePattern = "^((7(?=0|6|7|8))|(3(?=3)))[0-9]{8}$"; 
+  datePattern="^(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}$";
+  isValidFormSubmitted=false;
+
+
+
   id:number
   client:RegisterModel;
   // garant:GarantModel
@@ -33,22 +42,27 @@ export class ModifPage implements OnInit {
     
   }
 
-  update() {
+  update(form:NgForm) {
+    this.isValidFormSubmitted=false;
+  if(form.invalid){
+    return;
+  }
+  this.isValidFormSubmitted=true;
+this.client=form.value
     this._aut.update(this.id, this.client)
       .subscribe(data => console.log(data)
 
       // swal ("client modifié")
     , error => console.log(error));
-    //  this.client = new RegisterModel();
     this.gotoList();
   }
 
   
 
-  onSubmit() {
-    this.update(); 
+  // onSubmit() {
+  //   this.update(); 
     
-  }
+  // }
  
 
   gotoList() {

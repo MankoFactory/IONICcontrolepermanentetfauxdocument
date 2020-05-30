@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentService } from '../services/authent.service';
 import { AlertService } from '../services/alert.service'
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -17,8 +17,16 @@ export class LoginPage implements OnInit {
   public type = 'password'; 
          public showPass = false; 
   constructor(private _authenfication: AuthentService,
-    private _router :Router, public formBuilder: FormBuilder,private alertService: AlertService) { }
+    private _router :Router, public formBuilder: FormBuilder,private alertService: AlertService, private route: ActivatedRoute) {
+     
+       // redirect to home if already logged in
+      if (this._authenfication.currentUserValue) {
+        this._router.navigate(['/']);
+    }
+    // }
+     }
 
+     
   ngOnInit() {
    this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -44,7 +52,7 @@ export class LoginPage implements OnInit {
         let jwt= res.body['token'];
         this._authenfication.saveToken(jwt);
         // this._authenfication.saveUser(res.body['user']);
-        this._router.navigate(['/todo']);
+         this._router.navigate(['/todo']);
         
         //LocalStorage.setItem('token', res.token)
      },
@@ -68,12 +76,18 @@ export class LoginPage implements OnInit {
   // isUser(){
   //   return this._authenfication.isUser()
   // }
-  // isCaissier(){
-  //   return this._authenfication.isCaissier()
-  // }
-  // isAthenticated(){
-  //   return this._authenfication.isAuthenticated() 
-  //  }
+  logout() {
+    return this._authenfication.logout ();
+  }
+  loggedIn() {
+    return this._authenfication.loggIn ();
+ }
+   isAgent(){
+     return this._authenfication.isAgent()
+   }
+   isAthenticated(){
+     return this._authenfication.isAuthenticated() 
+    }
 
 }
 

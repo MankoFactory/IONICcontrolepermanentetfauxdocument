@@ -9,28 +9,41 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
-         
-         <ion-item routerLink="/todo" style="color: green;">
+        <ul >
+         <ion-item>
+         <li >
+         <a routerLink="/todo" style="color: green;">
           <ion-icon name="person-add" ></ion-icon>
           à faire
-        </ion-item>
-        <ion-item routerLink="/home" style="color: green;">
+         </a>
+      </li>
+    </ion-item>
+    <ion-item>
+      <li>
+        <a routerLink="/home" style="color: green;">
           <ion-icon name="list" ></ion-icon>
           Consultation
-        </ion-item>
-        
-         <ion-item  routerLink="/garantliste" style="color: green;">
+        </a>
+      </li>
+    </ion-item>
+    <ion-item>
+      <li>
+         <a routerLink="/garantliste" style="color: green;">
           <ion-icon name="list" ></ion-icon>
           Liste des garants
-        </ion-item>
-        <ion-item  routerLink="/login" style="color: green;">
+         </a>
+      </li>
+    </ion-item>
+    <ion-item>
+      <li>
+        <button   padding ion-item class="menu-btn" text-center style="color: green;"  (click)="Logout()" menuClose>
           <ion-icon name="log-out" ></ion-icon>
           Déconnexion
-        </ion-item>
- 
+        </button>
+      </li>
+    </ion-item>
        
-        </ion-list>
+      </ul>
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

@@ -60,8 +60,8 @@ export class RegisterPage implements OnInit {
     nom: ['', [Validators.required, Validators.pattern(this.nomPattern)]],
     prenom: ['', [Validators.required, Validators.pattern(this.nomPattern)]],
     num_cni: ['', [Validators.required, Validators.pattern(this.cniPattern)]],
-    lat:['',[Validators.required]],
-     lng:['',[Validators.required]],
+    latitude:['',[Validators.required]],
+     longitude:['',[Validators.required]],
      commentaire_agent:['',Validators.required],
      commentaire_client:['',Validators.required]
 });
@@ -78,13 +78,11 @@ this.garantForm=this.formBuilder.group({
   this.geo.getCurrentPosition({
     enableHighAccuracy: true
   }).then(location => {
-    this.registerForm.value.lat = location.coords.latitude;
-    this.registerForm.value.lng = location.coords.longitude;
+    this.registerForm.value.latitude = location.coords.latitude;
+    this.registerForm.value.longitude = location.coords.longitude;
   })
+  console.log(this.registerForm.value);
 }
-
-
-
 async openLibrary() {
   const options: CameraOptions = {
     quality: 10,
@@ -108,10 +106,6 @@ async openCamera() {
   };
   return this.camera.getPicture(options);
 }
-
-
-
-
  addPhoto(source: string, number: number) {
    let result =null;
    if(source=='camera') result = this.openCamera();
@@ -125,16 +119,17 @@ async openCamera() {
       if(number == 1){
         this.imgDevanture="data:image/jpeg;base64,"+ imageData;
         this.registerForm.get('photo_venture').setValue(imageData);
+        this.registerForm.value.imgDevanture=this.imgDevanture;
       }
       else{
         this.imageActivite="data:image/jpeg;base64,"+ imageData;
         this.registerForm.get('photo_activite').setValue(imageData);
+        this.registerForm.value.imageActivite=this.imageActivite;
       }
       
 
       // console.log("this.registerForm",this.registerForm);
     });
-  
 
 
   //   console.log("this.registerForm",this.registerForm);
@@ -187,6 +182,7 @@ ajoutUser(User){
     this.loading = false;
     
 });
+
  }
 
 ajoutgarant(){

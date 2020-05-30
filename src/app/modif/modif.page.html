@@ -21,33 +21,53 @@
  
           <div [hidden]="submitted" >
             <div class="container">
-            <form >
+            <form #userForm="ngForm" (ngSubmit)="update(userForm)">
 
               <div class="form-group">
                 <label for="tel">Telephone 1</label>
-                <input type="tel" id="tel"class="form-control" id="telephone"  [(ngModel)]="client.telephone" name="telephone">
+                <input type="tel" id="tel"class="form-control" id="telephone"  [(ngModel)]="client.telephone" name="telephone" [pattern]="telephonePattern" #telephone="ngModel">
+                <div *ngIf="telephone.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="telephone.errors.pattern" class="error"> 
+                    veuillez saisir un numéro valide
+                  </div>	
+              </div>
               </div>
           
               <div class="form-group">
                 <label for="tel1">Telephone 2</label>
-                <input type="tel" id="tel1" class="form-control" id="telephone1" [(ngModel)]="client.telephone1" name="telephone1">
+                <input type="tel" id="tel1" class="form-control" id="telephone1" [(ngModel)]="client.telephone1" name="telephone1" [pattern]="telephonePattern" #telephone1="ngModel">
+                <div *ngIf="telephone1.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="telephone.errors.pattern" class="error"> 
+                    veuillez saisir un numéro valide
+                  </div>
               </div>
-          
+          </div>
+
               <div class="form-group">
                 <label for="nom">Nom:</label>
-                <input type="text" id="nom" class="form-control" id="nom"  [(ngModel)]="client.nom" name="nom">
+                <input type="text" id="nom" class="form-control" id="nom"  [(ngModel)]="client.nom" name="nom" [pattern]="nomPattern" #nom="ngModel">
+                <div *ngIf="nom.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="nom.errors.pattern" class="error"> 
+                   veuillez saisir un nom valide
+                  </div>
               </div>
+             </div>
 
               <div class="form-group">
                 <label for="pren">Prénom:</label>
-                <input type="text" id="pren" class="form-control" id="prenom"  [(ngModel)]="client.prenom" name="prenom">
+                <input type="text" id="pren" class="form-control" id="prenom"  [(ngModel)]="client.prenom" name="prenom" [pattern]="nomPattern" #prenom="ngModel">
+                <div *ngIf="prenom.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="prenom.errors.pattern" class="error"> 
+                    veuillez saisir un prenom valide
+                  </div>
               </div>
-
+   </div>
               <div class="form-group">
                 <label for="date">Date de naissance:</label>
-                <input type="date" id="date" class="form-control" id="date_naissance"  [(ngModel)]="client.date_naissance" name="date_naissance">
+                <input type="date" id="date" class="form-control" id="date_naissance"  [(ngModel)]="client.date_naissance" name="date_naissance"  #date_naissance="ngModel">
+               
+             
               </div>
-
               <div class="form-group">
                 <label for="lieu">Lieu naissance:</label>
                 <input type="text" id="lieu" class="form-control" id="lieu_naissance"  [(ngModel)]="client.lieu_naissance" name="lieu_naissance">
@@ -55,19 +75,27 @@
 
               <div class="form-group">
                 <label for="cni">CNI:</label>
-                <input type="number" id="cni" class="form-control" id="num_cni"  [(ngModel)]="client.num_cni" name="num_cni">
+                <input type="number" id="cni" class="form-control" id="num_cni"  [(ngModel)]="client.num_cni" name="num_cni" [pattern]="cniPattern" #num_cni="ngModel">
+                <div *ngIf="num_cni.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="num_cni.errors.pattern" class="error"> 
+                    veuillez saisir un cni valide
+                  </div>
               </div>
-          
+          </div>
               <div class="form-group">
                 <label for="ad">Adresse:</label>
-                <input type="text" id="ad" class="form-control" id="adresse_client"  [(ngModel)]="client.adresse_client" name="adresse_client">
+                <input type="text" id="ad" class="form-control" id="adresse_client"  [(ngModel)]="client.adresse_client" name="adresse_client" >
               </div>
 
               <div class="form-group">
                 <label for="act">Activité:</label>
-                <input type="text" id="act" class="form-control" id="activite"  [(ngModel)]="client.activite" name="activite">
+                <input type="text" id="act" class="form-control" id="activite"  [(ngModel)]="client.activite" name="activite" [pattern]="nomPattern" #activite="ngModel">
+                <div *ngIf="activite.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+                  <div *ngIf="activite.errors.pattern" class="error"> 
+                    veuillez saisir une activité valide
+                  </div>
               </div>
-
+</div>
               <div class="form-group">
                 <label for="ag">Agence:</label>
                 <input type="text" id="ag" class="form-control" id="agence"  [(ngModel)]="client.agence" name="agence">
@@ -77,9 +105,11 @@
                 <label for="sexe">Genre:</label>
                 <input type="text" id="sexe" class="form-control" id="sexe"  [(ngModel)]="client.sexe" name="sexe">
               </div>
-<div class="form-group">
-              <button type="submit" class="btn btn-block" (click)="onSubmit()">Submit</button>
+
+             <div class="form-group">
+              <button type="submit" class="btn btn-block" >Submit</button>
             </div>
+
             </form>
           </div>
         </div>
