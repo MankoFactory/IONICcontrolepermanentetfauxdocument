@@ -5,7 +5,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 import {BehaviorSubject, Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
 import {environment} from '../../environments/environment';
-import { RegisterModel } from '../modeles/register.model';
+import { UserModel } from '../modeles/user.model';
 import { map } from 'rxjs/operators';
 
 
@@ -14,8 +14,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthentService {
-  private currentUserSubject: BehaviorSubject<RegisterModel>;
-  public currentUser: Observable<RegisterModel>; 
+  private currentUserSubject: BehaviorSubject<UserModel>;
+  public currentUser: Observable<UserModel>; 
 
 //   private _Updateclient="http://localhost:8000/api/updateClient";
 //   private _Updategarant="http://localhost:8000/api/updategarant";
@@ -27,31 +27,30 @@ export class AuthentService {
 // private _todo=" http://localhost:8000/api/visite";
 
 
-  jwt : string;
+ 
   email : string;
- roles: string;
+ roles=[];
   navigate: any;
+  rols=[];
   // _router: any;
   private headers = {
-    headers: new HttpHeaders().set(
-      "Authorization",
-      "Bearer " + localStorage.getItem("token")
-    )
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  jwt: string;
   constructor(private http: HttpClient,
     private _router:Router) {
-      this.currentUserSubject = new BehaviorSubject<RegisterModel>(JSON.parse(localStorage.getItem('currentUser')));
+      this.currentUserSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
     }
    
-    public get currentUserValue(): RegisterModel {
+    public get currentUserValue(): UserModel {
       return this.currentUserSubject.value;
   }
-   ajoutUser(fd:FormData ){
+    ajoutUser(fd:FormData ){
   
-    return this.http.post(environment.baseUrl+"client", fd,this.headers);
+     return this.http.post(environment.baseUrl+"client", fd,this.headers);
 
- }
+  }
 //  login(email, password){
 //   return this.http.post<any>(this._loginUrl,{ email, password }, {observe: 'response'})
   
@@ -98,9 +97,9 @@ export class AuthentService {
     return this.http.post(`${environment.baseUrl+"updateClient"}/${id}`, value,this.headers);
   }
  
-  updategarant(id: number, value: any): Observable<Object> {
-    return this.http.post(`${environment.baseUrl+"updategarant"}/${id}`, value,this.headers);
-  }
+   updategarant(id: number, value: any): Observable<Object> {
+     return this.http.post(`${environment.baseUrl+"updategarant"}/${id}`, value,this.headers);
+   }
   
 
     saveToken(jwt:string)
@@ -110,19 +109,28 @@ export class AuthentService {
       this.parseJWT();
     }
     parseJWT(){
-      let jwtHelper = new JwtHelperService();
-      let objJWT = jwtHelper.decodeToken(this.jwt);
+      const jwtHelper = new JwtHelperService();
+      const objJWT = jwtHelper.decodeToken(this.jwt);
       console.log(objJWT);
       this.email=objJWT.email;
-      // console.log(this.email)
+      console.log(this.email)
       this.roles=objJWT.roles;
-      // console.log(this.roles);
+       let i = 0;
+       objJWT.roles.forEach((r: { name: any; }) => {
+         this.rols[i] = r.name;
+        i++;
+      });
+      localStorage.setItem("roles",JSON.stringify(this.rols));
+       console.log('@@@@@@@@@@@@@@@');
+       console.log(this.rols);
+
+     // localStorage.setItem('roles',objJWT.roles);
     }
 
     saveUser(user: any) {
       localStorage.setItem('user',user);
-      this.email= user.email;
-      this.roles=user.roles;
+      // this.email= user.email;
+      // this.roles=user.roles;
     }
     
 
@@ -134,25 +142,47 @@ export class AuthentService {
   loggIn(){
     return !!localStorage.getItem('token')
   }
+  
   logout() {
-    // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
+  
+        localStorage.removeItem('token');
+        localStorage.removeItem('roles');
+        localStorage.removeItem('admin');
+        localStorage.removeItem('authenticated');
+        localStorage.removeItem('superadmin');
+        localStorage.removeItem('agent');
+        localStorage.removeItem('currentUser');
+        // localStorage.clear();
+        this.jwt = undefined;
+        this.email = undefined;
+        this.roles = undefined;
+     
+    }
  
   initParams(){
     this.jwt=undefined;
     this.email=undefined;
     //this.roles=undefined;
   }
-
- isAgent() {
-     return this.roles.indexOf('ROLE_AGENT') >= 0;
- }
- isAuthenticated() {
-     return this.roles && (this.isAgent());
-
-}
+  saveRole(rols:any){
+    localStorage.setItem('roles',rols);
+    this.rols=this.rols;
+  }
+  isAgent() {
+    const rols = JSON.parse(localStorage.getItem('roles')) || [];
+    return rols.includes('agent') ;
+   }
+   isAdmin() {
+    const rols = JSON.parse(localStorage.getItem('roles')) || [];
+    return rols.includes('admin') ;
+   }
+   isSuperadmin() {
+    const rols = JSON.parse(localStorage.getItem('roles')) || [];
+    return rols.includes('superadmin') ;
+   }
+   isAuthenticated() {
+    return this.roles && (this.isAdmin || this.isSuperadmin || this.isAgent);
+  }
 //   loadToken(){
 //     this.jwt=localStorage.getItem('token');
 //     this.parseJWT();

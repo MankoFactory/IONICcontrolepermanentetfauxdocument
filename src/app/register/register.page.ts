@@ -198,12 +198,13 @@ ajoutgarant(){
   this._authenfication.garant(this.garantForm.value)
   .subscribe(
     async res => {
-      alert("garant ajouté")
+      window.confirm('garant ajouté!');
       console.log(res)
     
    },
    error => {
     this.alertService.error(error);
+    window.confirm('Pas inséré!');
     this.loading = false;
 
 });

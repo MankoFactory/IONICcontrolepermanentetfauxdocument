@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
         //LocalStorage.setItem('token', res.token)
      },
      error => {
-      this.alertService.error(error);
+      this.alertService.error("email ou password incorrect");
       this.loading = false;
   });
    }
@@ -85,9 +85,7 @@ export class LoginPage implements OnInit {
    isAgent(){
      return this._authenfication.isAgent()
    }
-   isAthenticated(){
-     return this._authenfication.isAuthenticated() 
-    }
+ 
 
 }
 

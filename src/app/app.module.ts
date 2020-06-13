@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -14,6 +14,7 @@ import { AuthentService } from './services/authent.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx'; 
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 // import { IonicStorageModule } from '@ionic/storage';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +35,9 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     File,
     FilePath,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true},
     Geolocation
   ],
   bootstrap: [AppComponent]
