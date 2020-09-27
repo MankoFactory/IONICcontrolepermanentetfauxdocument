@@ -57,10 +57,12 @@ export class LoginPage implements OnInit {
         //LocalStorage.setItem('token', res.token)
      },
      error => {
+       console.log(error);
       this.alertService.error("email ou password incorrect");
       this.loading = false;
-  });
-   }
+  }
+  )
+  ;}
   //  showPassword() {
   //   this.showPass = !this.showPass;
   //         if(this.showPass){

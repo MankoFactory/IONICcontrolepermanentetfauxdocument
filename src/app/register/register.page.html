@@ -60,7 +60,7 @@
     <div [(ngSwitch)]="relationship"> 
       <ion-list *ngSwitchCase="'client'" id="form" class="ion-list"> 
         
-    <form [formGroup]="registerForm" (ngSubmit)="ajoutUser()" role="form">
+    <form [formGroup]="registerForm" (ngSubmit)="ajoutUser(registerForm.value)" role="form">
       <input id='step2' type='checkbox'>
       <input id='step3' type='checkbox'>
   
@@ -87,7 +87,6 @@
       <input aria-describedby="sizing-addon1" type="tel" id="telephone1" placeholder="Telephone 2" formControlName="telephone1" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone1.errors }">
       <label for="telephone1" class="lab">Telephone 2</label>
       <div *ngIf="submitted && f.telephone1.errors" class="invalid-feedback">
-           <div *ngIf="f.telephone1.errors.required">Veuillez saisir le numéro de téléphone</div> 
           <div *ngIf="f.telephone1.errors.pattern">Entrez un numéro de téléphone valide</div> 
       </div>
     </div>
@@ -99,7 +98,6 @@
       <input aria-describedby="sizing-addon1" type="text" placeholder="Prénom" formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
       <label for="prenom" class="lab">Prénom</label>
       <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
-          <div *ngIf="f.prenom.errors.required">Veuillez saisir le prénom</div>
           <div *ngIf="f.prenom.errors.pattern">Entrez un prénom valide</div>
       </div>
   </div>
@@ -109,7 +107,6 @@
     <input aria-describedby="sizing-addon1" id="nom" type="text" placeholder="Nom" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
     <label for="nom" class="lab">Nom</label>
     <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
-        <div *ngIf="f.nom.errors.required">Veuillez saisir le nom</div>
         <div *ngIf="f.nom.errors.pattern">Entrez un nom valide</div>
     </div>
 </div>
@@ -122,7 +119,6 @@
   <input aria-describedby="sizing-addon1" id="date" type="date" placeholder="Date de naissance" formControlName="date_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_naissance.errors }">
   <label for="date" class="lab">Date de naissance</label>
   <div *ngIf="submitted && f.date_naissance.errors" class="invalid-feedback">
-    <div *ngIf="f.date_naissance.errors.required">Veuillez saisir la date de naissance</div>
      <!-- <div *ngIf="f.nom.errors.minlength">Password must be at least 6 characters</div>  -->
 </div>
 
@@ -133,7 +129,6 @@
   <input aria-describedby="sizing-addon1" id="lieu" type="text" placeholder="Lieu de naissance" formControlName="lieu_naissance" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lieu_naissance.errors }">
   <label for="lieu" class="lab">Lieu de naissance</label>
   <div *ngIf="submitted && f.lieu_naissance.errors" class="invalid-feedback">
-  <div *ngIf="f.lieu_naissance.errors.required">Veuillez saisir le lieu de naissance</div>
   <div *ngIf="f.lieu_naissance.errors.pattern">Entrez un lieu valide</div>
 </div>
 </div>
@@ -145,7 +140,6 @@
   <input aria-describedby="sizing-addon1" id="cni" type="number" placeholder="CNI" formControlName="num_cni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.num_cni.errors }">
   <label for="cni" class="lab">CNI</label>
   <div *ngIf="submitted && f.num_cni.errors" class="invalid-feedback">
-      <div *ngIf="f.num_cni.errors.required">Veuillez saisir le cni</div>
       <div *ngIf="f.num_cni.errors.pattern">Entrez un cni valide</div>
   </div>
 </div>
@@ -155,7 +149,6 @@
   <input aria-describedby="sizing-addon1" id="activite" type="text" placeholder="activite" formControlName="activite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.activite.errors }">
   <label for="activite" class="lab">Activité</label>
   <div *ngIf="submitted && f.activite.errors" class="invalid-feedback">
-  <div *ngIf="f.activite.errors.required">Veuillez saisir une adresse</div>
    <div *ngIf="f.activite.errors.pattern">Entrez une adresse valide</div>
 </div>
 </div>
@@ -177,7 +170,6 @@
       <input aria-describedby="sizing-addon1" id="adresse" type="text" placeholder="Adresse" formControlName="adresse_client" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse_client.errors }">
       <label for="adresse" class="lab">Adresse</label>
       <div *ngIf="submitted && f.adresse_client.errors" class="invalid-feedback">
-      <div *ngIf="f.adresse_client.errors.required">Veuillez saisir une adresse</div>
        <div *ngIf="f.adresse_client.errors.pattern">Entrez une adresse valide</div>
     </div>
     </div>
@@ -249,7 +241,6 @@
             <input type="text" placeholder="Agence" formControlName="agence" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.agence.errors }" >
             <label for="agence" class="lab">Agence</label>
             <div *ngIf="submitted && f.agence.errors " class="invalid-feedback">
-                <div *ngIf="f.agence.errors.required">Veuillez saisir une agence</div>
                 <div *ngIf="f.agence.errors.pattern">Entrez une agence valide</div>  
             </div>
           </div> 
@@ -283,9 +274,12 @@
             </ion-card>
           </div>
         <div class="form-group">
-          <textarea id="message" class="form-control" formControlName="commentaire_agent" placeholder="Message"></textarea>
+          <textarea id="message" class="form-control" formControlName="commentaire_agent" placeholder="Message" [ngClass]="{ 'is-invalid': submitted && f.commentaire_agent.errors }"></textarea>
           <label for="commentaire_agent" class="lab">Commentaire de l'agent</label>
-
+          <div *ngIf="submitted && f.commentaire_agent.errors " class="invalid-feedback">
+            <div *ngIf="f.commentaire_agent.errors.required">Veuillez faire un commentaire</div>
+             
+        </div>
         </div>
 
         <div class="form-group">

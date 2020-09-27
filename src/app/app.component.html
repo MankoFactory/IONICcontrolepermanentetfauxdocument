@@ -10,6 +10,7 @@
       </ion-header>
       <ion-content>
         <ul >
+          <ion-menu-toggle auto-hide="true">
          <ion-item>
          <li >
          <a routerLink="/todo" style="color: green;">
@@ -34,15 +35,15 @@
          </a>
       </li>
     </ion-item>
-    <ion-item>
-      <li>
-        <button   padding ion-item class="menu-btn" text-center style="color: green;"  (click)="logout()" menuClose>
+    <ion-item  >
+      <li >
+        <button ion-button  style="color: green;"  (click)="logout()" >
           <ion-icon name="log-out" ></ion-icon>
           Déconnexion
         </button>
       </li>
     </ion-item>
-       
+  </ion-menu-toggle>
       </ul>
       </ion-content>
     </ion-menu>

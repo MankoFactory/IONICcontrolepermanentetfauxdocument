@@ -13,7 +13,7 @@ import { NgForm} from '@angular/forms';
   styleUrls: ['./garantupdate.page.scss'],
 })
 export class GarantupdatePage implements OnInit {
-  
+  submitted = false;
   nomPattern = "^[A-Za-z]{2,}$";
   cniPattern= "^[0-9]{9}$";
   telephonePattern = "^((7(?=0|6|7|8))|(3(?=3)))[0-9]{8}$"; 

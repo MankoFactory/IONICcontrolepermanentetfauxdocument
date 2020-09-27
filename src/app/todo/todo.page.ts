@@ -67,7 +67,7 @@ export class TodoPage implements OnInit {
   }
   isAgent() {
     if(this._aut.isAgent()) this.agent = true;
-    // return this._aut.isAgent();
+    localStorage.setItem('agent',this.agent+'');
   }
 
   logout() {

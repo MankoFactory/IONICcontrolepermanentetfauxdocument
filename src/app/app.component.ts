@@ -74,8 +74,9 @@ currentUser: UserModel;
   }
   isAgent() {
     if(this._authenfication.isAgent()) this.agent = true;
-
+    localStorage.setItem('agent',this.agent+'');
   }
+  
 
   logout() {
     return this._authenfication.logout();
@@ -84,13 +85,8 @@ currentUser: UserModel;
 
   isAuthenticated() {
     if(this._authenfication.isAuthenticated()) this.authenticated = true;
-   
   }
-  
-  // Logout(){
-  //   this._authenfication.logout();
-  //   
-  // }
+ 
   getStatus(key){     
     let boolValue = (localStorage.getItem(key) =="true");
     return boolValue;

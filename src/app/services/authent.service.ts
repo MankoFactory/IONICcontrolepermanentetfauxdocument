@@ -144,7 +144,7 @@ export class AuthentService {
   }
   
   logout() {
-  
+    if (window.confirm('Vous etes sure de vouloir déconnecter ?')) {
         localStorage.removeItem('token');
         localStorage.removeItem('roles');
         localStorage.removeItem('admin');
@@ -152,11 +152,12 @@ export class AuthentService {
         localStorage.removeItem('superadmin');
         localStorage.removeItem('agent');
         localStorage.removeItem('currentUser');
+        this._router.navigate(['/login']);
         // localStorage.clear();
         this.jwt = undefined;
         this.email = undefined;
         this.roles = undefined;
-     
+    }
     }
  
   initParams(){
@@ -191,6 +192,7 @@ export class AuthentService {
 logoute() {
   if (window.confirm('Vous etes sure de vouloir déconnecter ?')) {
   localStorage.removeItem('token');
+
   this.jwt = undefined;
   this.email = undefined;
   this.roles = undefined;
